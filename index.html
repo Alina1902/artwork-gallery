@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistry Haven</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">Artistry Haven</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="home-btn" class="nav-btn active">Home</a></li>
+                <li><a href="#" id="artworks-btn" class="nav-btn">Artworks</a></li>
+                <li><a href="#" id="artists-btn" class="nav-btn">Artists</a></li>
+                <li><a href="#" id="about-btn" class="nav-btn">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home-section" class="section active">
+            <div class="image-slider">
+                <div class="slide-container">
+                    <img src="artwork(1).jpg" alt="Artwork 1" class="slide active">
+                    <img src="artwork(2).jpg" alt="Artwork 2" class="slide">
+                    <img src="artwork(3).jpg" alt="Artwork 3" class="slide">
+                </div>
+                <div class="slider-nav">
+                    <button class="prev">&lt;</button>
+                    <button class="next">&gt;</button>
+                </div>
+            </div>
+
+            <section id="featured" class="featured-section">
+                <h2>Featured Artwork</h2>
+                <div id="featured-artwork" class="featured-artwork"></div>
+            </section>
+
+            <section id="new-arrivals" class="arrivals-section">
+                <h2>New Arrivals</h2>
+                <div class="artwork-grid" id="new-arrivals-grid"></div>
+            </section>
+
+            <section id="popular" class="popular-section">
+                <h2>Popular Artworks</h2>
+                <div class="artwork-grid" id="popular-grid"></div>
+            </section>
+        </section>
+
+        <section id="artworks-section" class="section">
+            <h2>All Artworks</h2>
+            <div class="filter-search-container">
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <!-- Other options will be added dynamically by JavaScript -->
+                </select>
+                <input type="text" id="search-input" placeholder="Search artworks...">
+            </div>
+            <div class="artwork-grid" id="all-artworks-grid"></div>
+        </section>
+
+        <section id="artists-section" class="section">
+            <h2>Our Artists</h2>
+            <div id="artists-list" class="artists-grid"></div>
+        </section>
+
+        <section id="about-section" class="section">
+            <h2>About Artistry Haven</h2>
+            <p>Welcome to Artistry Haven, where creativity knows no bounds. Our online gallery is a sanctuary for art enthusiasts, collectors, and curious minds alike. Here, we celebrate the diverse expressions of human imagination, curating a collection that spans various styles, mediums, and cultures.</p>
+            <p>At Artistry Haven, we believe that art has the power to inspire, provoke thought, and transform spaces. Our mission is to connect talented artists with art lovers around the world, fostering a community that appreciates the beauty and significance of artistic expression.</p>
+        </section>
+        <div id="artwork-details-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="artwork-details"></div>
+                <div id="artwork-reviews"></div>
+                <form id="review-form">
+                    <h3>Leave a Review</h3>
+                    <input type="hidden" id="review-artwork-id">
+                    <input type="text" id="review-name" placeholder="Your Name" required>
+                    <select id="review-rating" required>
+                        <option value="">Select Rating</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                    <textarea id="review-text" placeholder="Your Review" required></textarea>
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="artwork-details-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="artwork-details"></div>
+                <div id="artwork-reviews"></div>
+                <form id="review-form">
+                    <h3>Leave a Review</h3>
+                    <input type="hidden" id="review-artwork-id">
+                    <input type="text" id="review-name" placeholder="Your Name" required>
+                    <div class="rating">
+                    <select id="review-rating" required>
+                        <option value="" class="rating">Select Rating</option>
+                        <option value="1" class="rating">1 Star</option>
+                        <option value="2" class="rating">2 Stars</option>
+                        <option value="3" class="rating">3 Stars</option>
+                        <option value="4" class="rating">4 Stars</option>
+                        <option value="5" class="rating">5 Stars</option>
+                    </select>
+                    <textarea id="review-text" placeholder="Your Review" required></textarea>
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
+        </div>
+        </div>
+        <div id="artist-profile-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="artist-profile"></div>
+    </div>
+</div>
+        <div id="cart-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Your Cart</h2>
+                <div id="cart-items"></div>
+                <div id="cart-total"></div>
+                <button id="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <div id="checkout-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Checkout</h2>
+                <form id="checkout-form">
+                    <input type="text" id="name" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="text" id="address" placeholder="Shipping Address" required>
+                    <input type="text" id="card" placeholder="Card Number" required>
+                    <button type="submit">Complete Purchase</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Artistry Haven. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

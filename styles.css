@@ -1,0 +1,653 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #000000;
+    --secondary-color: #333333;
+    --accent-color: #ffd700;
+    --text-color: #ffffff;
+    --background-color: #121212;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    background-image: url('download\ \(1  \).jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+.nav-btn {
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.artwork-grid, .artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.artwork-card, .artist-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artwork-card:hover, .artist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.artwork-card img, .artist-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.artist-card img {
+    border-radius: 50%;
+}
+
+.featured-artwork {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.featured-artwork img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.image-slider {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.slide-container {
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.slider-nav button {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    color: #333;
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slider-nav button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: var(--background-color);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--accent-color);
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: var(--accent-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: var(--text-color);
+}
+
+/* Cart and checkout styles */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.cart-item h4 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.remove-from-cart {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-from-cart:hover {
+    background-color: #c0392b;
+}
+
+#checkout-form {
+    display: grid;
+    gap: 15px;
+}
+
+#checkout-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+#checkout-form input:focus {
+    outline: none;
+    border-color: var(--text-color);
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+}
+
+#checkout-form button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+}
+
+#checkout-form button:hover {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+}
+/* ... existing styles ... */
+
+/* Review styles */
+#reviews-container {
+    margin-top: 20px;
+}
+
+.review {
+    background-color: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+/* Review form styles */
+#review-form, #artist-contact-form {
+    margin-top: 20px;
+    display: grid;
+    gap: 10px;
+}
+
+#review-form input, #review-form select, #review-form textarea,
+#artist-contact-form input, #artist-contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    background-color: rgba(255, 215, 0, 0.1);
+    color: var(--text-color);
+}
+
+#review-form button, #artist-contact-form button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#review-form button:hover, #artist-contact-form button:hover {
+    background-color: var(--text-color);
+    color: var(--accent-color);
+}
+.rating .rating{
+    color: #000000;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styles for new elements */
+.filter-search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#category-filter,
+#search-input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+#category-filter {
+    width: 200px;
+    cursor: pointer;
+}
+
+#search-input {
+    width: calc(100% - 220px);
+}
+
+#category-filter:focus,
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(74, 74, 74, 0.5);
+}
+
+#checkout-btn,
+.btn {
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#checkout-btn:hover,
+.btn:hover {
+    background-color:var(--accent-color);
+}
+
+/* Modal styles */
+.modal-content {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#checkout-form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#checkout-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4a4a4a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#checkout-form button:hover {
+    background-color: var(--accent-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .filter-search-container {
+        flex-direction: column;
+    }
+
+    #category-filter,
+    #search-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+.btn, #checkout-btn, .slider-nav button, .remove-from-cart, #checkout-form button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+
+.btn:hover, #checkout-btn:hover, .slider-nav button:hover, #checkout-form button:hover {
+    background-color: var(--text-color);
+    color: var(--accent-color);
+}
+/* Slider nav buttons */
+.slider-nav button {
+    background-color: rgba(255, 215, 0, 0.7); /* Semi-transparent gold */
+    color: var(--primary-color);
+}
+
+.slider-nav button:hover {
+    background-color: rgba(255, 215, 0, 0.9); /* More opaque gold on hover */
+}
+
+/* Remove from cart button */
+.remove-from-cart {
+    background-color: #e74c3c; /* Keep the red color for clear visual cue */
+    color: var(--text-color);
+}
+
+.remove-from-cart:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Filter and search inputs */
+#category-filter,
+#search-input {
+    border-color: var(--accent-color);
+    color: var(--primary-color);
+    background-color: rgba(255, 215, 0, 0.1); /* Slight gold tint */
+}
+
+#category-filter:focus,
+#search-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+/* Checkout form inputs */
+#checkout-form input {
+    border-color: var(--accent-color);
+    background-color: rgba(255, 215, 0, 0.1); /* Slight gold tint */
+    color: var(--primary-color);
+}
+
+#checkout-form input:focus {
+    border-color: var(--text-color);
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+/* Cart and details card text color */
+.modal-content, #cart-items, #artwork-details, #artist-profile {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.cart-item {
+    background-color: rgba(255, 215, 0, 0.1); /* Slight gold tint */
+    border: 1px solid var(--accent-color);
+}
+
+/* Artwork display */
+.artwork-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.artwork-card {
+    background-color: transparent;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    width: calc(33.333% - 2rem);
+    max-width: 300px;
+}
+
+.artwork-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.artwork-card:hover {
+    transform: translateY(-5px);
+}
+
+.artwork-card:hover img {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.artwork-card h3, .artwork-card p {
+    margin-top: 0.5rem;
+    color: var(--text-color);
+}
+
+/* Responsive design for artwork grid */
+@media (max-width: 992px) {
+    .artwork-card {
+        width: calc(50% - 2rem);
+    }
+}
+
+@media (max-width: 576px) {
+    .artwork-card {
+        width: 100%;
+    }
+}
+
+/* Modal content scrollbar */
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    border: 3px solid var(--background-color);
+}
